@@ -1,0 +1,1728 @@
+\documentclass[112pt, cmcyralt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,mathtools,amsthm}
+\usepackage[paper=a4paper, top=15mm, bottom=13.5mm, left=13mm, right=13mm, includefoot]{geometry}
+\usepackage{pgfplots} %графики
+\usepackage{physics}
+
+\usepackage{graphicx}  
+\graphicspath{{images/}{images2/}} 
+\setlength\fboxsep{3pt} 
+\setlength\fboxrule{1pt} 
+\usepackage{wrapfig} 
+
+\DeclareMathOperator{\Lin}{\mathrm{Lin}}
+\DeclareMathOperator{\Linp}{\Lin^{\perp}}
+\DeclareMathOperator*\plim{plim}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\sgn}{sign}
+\DeclareMathOperator{\sign}{sign}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\amn}{arg\,min}
+\DeclareMathOperator*{\amx}{arg\,max}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pCorr}{pCorr}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\usepackage{tikz, pgfplots} % язык для рисования графики из latex'a
+\usetikzlibrary{trees} % прибамбас в нем для рисовки деревьев
+\usetikzlibrary{arrows} % прибамбас в нем для рисовки стрелочек подлиннее
+\usepackage{tikz-qtree} % прибамбас в нем для рисовки деревьев
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cBinom}{\mathcal{Binom}}
+\newcommand{\cBin}{\cBinom}
+\newcommand{\cPois}{\mathcal{Pois}}
+\newcommand{\cBeta}{\mathcal{Beta}}
+\newcommand{\cGamma}{\mathcal{Gamma}}
+
+\newcommand \R{\mathbb{R}}
+\newcommand \N{\mathbb{N}}
+\newcommand \Z{\mathbb{Z}}
+
+%%%%%%%%%%%%%%%%%% вставки
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Списки без уродских отступов
+\newenvironment{enumerate*}{
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newenvironment{itemize*}{
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\abovedisplayskip=0mm
+\abovedisplayshortskip=0mm
+\belowdisplayskip=0mm
+\belowdisplayshortskip=0mm
+
+\newcommand{\dx}[1]{\,\mathrm{d}#1} % для интеграла: маленький отступ и прямая d
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}} % Индикатор события
+%\renewcommand{\to}{\rightarrow}
+\newcommand{\eqdef}{\mathrel{\stackrel{\rm def}=}}
+\newcommand{\iid}{\mathrel{\stackrel{\rm i.\,i.\,d.}\sim}}
+\newcommand{\const}{\mathrm{const}}
+
+\def\be{\hangindent=14mm \hangafter=1 \noindent}
+\usepackage{booktabs}
+
+
+\title{Подборка контрольных работ и экзаменов\\
+по математической статистике}
+\author{Вардикян Ася, Кабанова Юля, Петрова Дарина \\ БЭК182}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{enumerate}
+
+\section{Промежуточный экзамен 2016-2017 гг}
+
+%1
+\item
+Вероятность того, что первой вытянутой картой окажется тройка, равна: $\P(A)=\frac{4}{52}=\frac{1}{13}$
+
+Безусловная вероятность события $B$ считается по формуле:
+
+\[
+\P(B)=\frac{A_4^1\cdot A_3^1+A_{48}^1\cdot A_4^1}{A_{52}^2}=\frac{4\cdot3 + 48\cdot4}{2652} = \frac{17}{221},
+\]
+
+где 
+$A_{52}^2$ -- общее число исходов испытания,\\
+$A_4^1$ –- число исходов, когда вытянута одна из 4 семерок (первый раз вытянута не семерка),\\
+$A_3^1$ –- число исходов, когда во второй раз вытянута одна из трех оставшихся семерок (первой вытянутой картой была семерка), \\
+$A_{48}^1$ -- число исходов, когда вытянута первый раз вытянута не семерка.
+
+Если А произошло, то перед извлечением второй карты останется 51 карта, из которых 4 являются семерками, следовательно, $\P(B\mid A)=\frac{4}{51}$.
+
+Так как $\P(B\mid A)=\frac{4}{51} \neq \frac{17}{221}=\P(B)$, то события $A$ и $B$ являются зависимыми.
+
+Аналогично, $B$ и $C$ являются зависимыми:
+
+Безусловная вероятность события $C$ (первый и второй раз вытянута не дама пик, третий раз -- дама пик) считается по формуле:
+
+\[
+\P(C)=\frac{51}{52}\cdot\frac{50}{51}\cdot\frac{1}{5}=\frac{1}{52}
+\]
+
+Вероятность того, что событие $C$ произошло при условии, что $B$ произошло (при этом первый раз должна быть вытянута не дама пик):
+
+\[
+\P(C\mid B)=\frac{51}{52}\cdot\frac{17}{221}\cdot\frac{1}{5}=\frac{867}{574600}\neq\P(C)=\frac{1}{52}
+\] 
+
+следовательно, $C$ и $B$ зависимы.
+
+\textbf{Ответ: B}
+
+
+%2
+\item
+Согласно свойствам функции плотности, она:
+
+1) Больше или равна нулю, следовательно, А и В неверно.\\
+2) $\int_{-\infty}^{+\infty} f_X(x)dx=1$
+
+Так как в С:
+
+\[
+\int_{1}^{+\infty} \frac{1}{x^2}\dx=\frac{-1}{x}\bigg|_1^\infty=1,
+\] 
+
+то 
+
+\[
+f_X(x)= 
+ \begin{cases}
+   \frac{1}{x^2}, &\text{$x \in [1;+\infty)$}\\
+   0, &\text{иначе}
+ \end{cases}
+\]
+ 
+может являться функцией плотности.
+
+Так как в E:
+
+\[
+\int_{0}^{2}x^2dx=\frac{x^3}{3}\bigg|_0^2=\frac{8}{3}\neq 1,
+\]
+
+то 
+
+\[
+f_X(x)=
+ \begin{cases}
+   x^2, &\text{$x \in [0;2]$}\\
+   0, &\text{иначе}
+ \end{cases}
+\]
+не может являться функцией плотности (Е неверно).
+
+$f_X(x) =\frac{1}{\sqrt{2\pi}}e^{-2x}$ не может являться функцией плотности, так как 
+
+\[
+\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}}e^{-2x}dx=\frac{1}{\sqrt{2}}\neq1
+\]
+
+(D неверно).
+
+\textbf{Ответ: С}
+
+
+%3
+\item 
+
+По свойству
+
+\[
+\Cov(X,Y)=\E(XY)-\E(X)\E(Y)
+\]
+
+получается:
+
+\[
+\E(XY)=\E(X)\E(Y)+\Cov(X,Y)=3\cdot2+2=8
+\]
+
+\textbf{Ответ: A}
+
+
+%4
+\item
+
+\[
+\Corr(X,Y)= \frac{\Cov(X,Y)}{\sqrt{\Var(X)\cdot\Var(Y)}}=\frac{2}{\sqrt{12\cdot1}}=\frac{1}{\sqrt{3}}
+\]
+
+\textbf{Ответ: A}
+
+
+%5
+\item
+
+\[
+\Var(2X-Y+4)= 2^2\Var(X)+\Var(Y)+2\Cov(2X,-Y)=2^2\Var(X)+\Var(Y)-2\cdot2\Cov(X,Y)=4\cdot12+1-4\cdot2=41
+\]
+
+\textbf{Ответ: E}
+
+
+%6
+\item
+
+Ковариационная матрица для $X$ и $Y$ в общем виде:
+
+\begin{center}
+ \begin{pmatrix}
+   $\Var(X)$  & $\Corr(X,Y)$\\
+   $\Corr(X,Y)$ & $\Var(Y)$ 
+ \end{pmatrix}
+\end{center}
+
+Так как ковариационная матрица является единичной, значит, она имеет вид:
+
+\begin{center}
+ \begin{pmatrix}
+   $1$  & $0$\\
+   $0$ & $1$ 
+ \end{pmatrix}
+\end{center}
+
+Следовательно, $\E(X)=\E(Y)=0, \Var(X)=\Var(Y)=1, \Cov(X,Y)=0$.
+
+По свойству ковариации, если $\Cov(X,Y)=0$, то случайные величины $X$ и $Y$ являются независимыми.
+
+\textbf{Ответ: D}
+
+
+%7
+\item 
+
+\begin{align*}
+\Corr(X+Y,2Y-7)
+=\frac{\Cov(X+Y,2Y-7)}{\sqrt{\Var(X+Y)\cdot \Var(2Y-7)}}
+=\frac{\Cov(X,2Y-7)+\Cov(Y,2Y-7)}{\sqrt{\Var(X)+\Var(Y)+2\Cov(X,Y)\Var(2Y)}}=\\
+=\frac{2\Cov(X,Y)+2\Cov(Y,Y)}{\sqrt{\Var(X)+\Var(Y)+2\Cov(X,Y)4\Var(Y)}}
+=\frac{2\Cov(X,2)+2\Var(Y)}{\sqrt{\Var(X)+\Var(Y)+2\Cov(X,Y)4\Var(Y)}}
+\end{align*}
+
+Так как по условию 
+
+\[
+\Corr(X,Y)=\frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}=0.5 \text{ и} \Var(X)=\Var(Y),
+\]
+
+то 
+
+\[
+\Corr(X,Y)= \frac{\Cov(X,Y)}{\sqrt{\Var(X)\cdot \Var(Y)}}=\frac{\Cov(X,Y)}{\Var(X)}=0.5,
+\]
+
+следовательно, 
+
+\[
+\Cov(X,Y)=0.5\Var(X)
+\]
+
+Тогда:
+
+\[
+\Corr(X+Y, 2Y-7)=\frac{2\cdot 0.5\Var(X)+2\Var(X)}{\sqrt{[2\Var(X)+2\cdot 0.5 \Var(X)]\cdot 4\Var(X)}}=\frac{3\Var(X)}{\sqrt{12\Var(X)^2}}=\frac{\sqrt{3}}{2}
+\]
+
+\textbf{Ответ: B}
+
+
+%8
+\item 
+
+\[
+\P(0.2<\xi<0.7)=F(0.7)-F(0.2)
+\]
+
+Так как при функция распределения при $x \in [0; 1]: F_\xi(x) = \frac{x-0}{1-0}=x$, то:
+
+\[
+F(0.7) = 0.7; F(0.2) = 0.2
+\]
+
+Следовательно, 
+
+\[
+\P(0.2<\xi<0.7) = 0.7-0.2 = 0.5
+\]
+
+\textbf{Ответ: D}
+
+
+%9
+\item 
+
+Согласно центральной предельной теореме, если случайные величины $\xi_1,\ldots, \xi_n$  независимы и одинаково распределены, то:
+
+\[
+\frac{S_n-\E(S_n)}{\sqrt{\Var(S_n)}} \xrightarrow d Z\sim \cN(0,1) \text{ при } n \rightarrow \infty
+\]
+
+где $S_n = \xi_1 + \ldots + \xi_n;
+\E(S_n) = n\cdotE(\xi_i);
+\Var(S_n) = n\cdot \Var(\xi_i)$
+
+Тогда функция плотности у предела стандартизированных сумм имеет вид:
+
+\[
+f_\xi(x)=\frac{1}{\sqrt{s\pi}}e^{-\frac{x^2}{2}}
+\]
+
+Следовательно, 
+
+\[
+\lim_{n\to\infty}\P\qty(\grande \frac{S_n-\E[S_n]}{\sqrt{\Var(S_n)}}>1)=\int_{1}^{+\infty} f_\xi(t)dt = \int_{1}^{+\infty} \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}dt
+\]
+
+\textbf{Ответ: B}
+
+
+%10
+\item
+
+$\E(X_i) = 400, \Var(X_i) = 400, n = 100$. 
+
+Так как $S_n = X_1 + \ldots + X_n$, следовательно:
+
+\[
+\E(S_n) = n\cdot \E(X_i) = 40000
+\]
+\[
+\Var(S_n) = n\cdot \Var(X_i) = 40000
+\]
+
+Согласно ЦПТ:
+
+\[
+\P(S_n>40400)=\P\qty(\grande Z>\frac{40400-40000}{\sqrt{40000}}) = \P(Z>2) = 1 -\P(Z<2) = 1 - 0.97725 = 0.022750132
+\]
+
+\textbf{Ответ: D}
+
+
+%11
+\item 
+
+$\E(X_i) = 10000$. Согласно неравенству Маркова:
+
+\[
+\P(X_i \geqslant 50000) \leqslant \frac{\E(X_i)}{50000}
+\]
+\[
+\P(X_i \geqslant 50000) \leqslant  \frac{10000}{50000} = 0.2
+\]
+
+\textbf{Ответ: A}
+
+
+%12
+\item 
+События являются несовместными, если они не содержат общих исходов, то есть наступление одного из этих событий исключает наступление другого.
+
+События $A$ и $C$ являются несовместными, так как если произойдет $C$ (все три раза выпал орёл), то $A$ не произойдет (решка не может выпасть хотя бы 1 раз).
+
+Так как монетка подбрасывается три раза, то один раз может выпасть решка и другой раз – орел, следовательно, $A$ и $B$ являются совместными.
+
+\textbf{Ответ: A}
+
+
+%13
+\item 
+
+$\E(X_i) = 50000, \sqrt{\Var(X_i)} = 10000$. 
+Согласно неравенству Чебышева:
+
+\[
+\P=(\abs{X_i-\E(X_i)}\leqslant20000)\geqslant1 -\frac{\Var(X_i)}{20000^2} =1- \frac{10000^2}{20000^2}=1-0.25=0.75
+\]
+
+\textbf{Ответ: C}
+
+
+%14
+\item
+
+\[
+\xi_i =
+ \begin{cases}
+   $1$, &\text{с вероятностью $p=0.6$}\\
+   $0$, &\text{с вероятностью $1-p=0.4$}\\
+ \end{cases}
+\]
+
+Следовательно, 
+\[
+\xi_i^{2016} = \xi_i,
+\]
+
+значит,
+
+\[
+\frac{\xi_1^{2016} +\ldots+ \xi_n^{2016}}{n} = \frac{\xi_1 +\ldots+ \xi_n}{n} = \overline{\xi} = \frac{(0.6\cdot1 +0.4\cdot0)}{n}=0.6
+\]
+
+Таким образом,
+
+\[
+\plim_{n\to\infty}\frac{\xi_1+\ldots+\xi_n}{n}=\plim_{n\to\infty}(0.6)=0.6
+\]
+
+\textbf{Ответ: A}
+
+
+%15
+\item 
+Пусть вероятность успеха (выпалo 6) в одном испытании равна $p = \frac{1}{6}$, тогда вероятность неудачи (выпалo не 6): $1 - p = \frac{5}{6}$. Следовательно, по формуле Бернулли:
+
+\[
+\P(X = k) = C_n^k\cdot \p^k (1-\p)^{n-k}
+\]
+
+где $n = 5, k = 2$. Тогда:
+
+\[
+\P(X = 2) = C_5^2 \cdot \qty(\grande \frac{1}{6})^2 \cdot \qty(\grande \frac{5}{6})^3 = \frac{5!}{2!\cdot3!}\cdot\frac{5^3}{6^5}=\frac{2\cdot5^4}{6^5}=\frac{2\cdot5^4}{2\cdot3\cdot6^4} =\frac{5^4}{2^4\cdot3^5}
+\]
+
+\textbf{Ответ: нет правильного ответа}
+
+
+%16
+\item 
+
+Так как вероятность успеха (выпалo 6) в одном испытании равна $p = \frac{1}{6}$, тогда вероятность неудачи (выпалo не 6): $1-p = \frac{5}{6}$. Число бросков $n = 5$.
+
+\[
+\E(X) = n\cdot p= 5\cdot\frac{1}{6}=\frac{5}{6}
+\]
+\[
+\Var(X)=n\cdotp\cdot(1-p) = 5\cdot\frac{1}{6}\cdot\frac{5}{6}=\frac{25}{36}
+\]
+
+\textbf{Ответ: нет правильного ответа}
+
+
+%17
+\item
+
+Наиболее вероятное число шестерок считается как медиана $m$ по формуле:
+\[
+np - (1-p) \leqslant m \leqslant np + p
+\]
+
+Число бросков $n = 5$. Так как вероятность успеха (выпалo 6) в одном испытании равна $p = \frac{1}{6}$, тогда вероятность неудачи (выпалo не 6): $1 - p = \frac{5}{6}$. 
+
+Следовательно, 
+
+\[
+5\cdot\frac{1}{6} - \frac{5}{6} \leqslant m \leqslant 5\cdot \frac{1}{6} + \frac{1}{6}
+\]
+\[
+0 \leqslant m \leqslant 1
+\]
+
+Значит, наиболее вероятное число шестерок 0 и 1
+
+\textbf{Ответ: E}
+
+
+%18
+\item 
+Условие:
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lcccccc}
+    \toprule
+      $X=x_i$    & $1$   & $2$   & $3$   & $4$   & $5$   & $6$  \\
+      \midrule
+      $\P(X=x_i)$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+
+$\E(X) = \frac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5$
+-- математическое ожидание выпавших очков за 1 бросок.
+
+Следовательно, математическое ожидание суммы выпавших очков за 5 бросков равно: 
+$5\cdot \E(X)=5\cdot3.5=17.5$\\
+
+\textbf{Ответ: E}
+
+
+%19
+\item 
+
+Общий вид функции плотности двумерного нормального распределения:
+
+\[
+f_{\xi,\eta}(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}e^{\qty(\grande \frac{-1}{2(1-\rho^2)})\qty(\grande \frac{(x-\mu_x)^2}{\sigma_x^2}-2\rho\frac{(x-\mu_x)(y-\mu_y)}{\sigma_x\sigma_y}+\frac{(y-\mu_y)^2}{\sigma_y^2})},
+\]
+
+где $\rho=\Corr(\xi,\eta)=\frac{\Cov(\xi,\eta)}{\sigma_x\sigma_y}$
+
+\[
+\xi \sim \cN(\mu_x,\sigma_x^2)
+\]
+\[
+\eta \sim \cN(\mu_y,\sigma_y^2)
+\]
+
+Так как по условию 
+$\mu_x=\mu_y=0, \sigma_x^2=\sigma_y^2=1, \ov(\xi,\eta) = 0.5, то \rho= \Cov(\xi,\eta) = 0.5$, 
+следовательно, функция плотности имеет вид:
+
+\[
+f_{(\xi,\eta}(x,y)=\frac{1}{2\pi\sqrt{1-0,25}}e^{(\frac{-4}{2\cdot3})(x^2-xy+y^2)}=\frac{1}{\pi\sqrt{3}}e^{(-\frac{2}{3})(x^2-xy+y^2)}
+\]
+
+Чтобы найти a и b, должны выполняться условия:
+
+\begin{center}
+ \begin{cases}
+   $\pi\sqrt{3}=2\pi\alpha$\\
+   -\frac{2}{3}(x^2-xy+y^2) = -\frac{2}{3}(x^2-bxy+y^2)\\
+ \end{cases}
+ \end{center}
+ 
+Разделив первое уравнение на $2\pi$, получаем $a=\frac{\sqrt{3}}{2}$. Тогда второе уравнение примет вид:
+
+\[
+-\frac{2}{3}(x^2-xy+y^2) = -\frac{2}{3}(x^2-bxy+y^2)
+\]
+Значит, $b = 1$.
+
+\textbf{Ответ: C}
+
+
+%20
+\item 
+
+\[
+\E(\xi - 0.5\eta) = \E(\xi) - 0.5\E(\eta) = 0 - (0.5)\cdot0 = 0
+\]
+\[
+\Var(\xi - 0.5\eta) = \Var(\xi) + 0.25\Var(\eta) - 2\cdot(0.5)\Cov(\xi, \eta) = 1 + 0.25\cdot 1 - 0.5 = 0.75
+\]
+\[
+\Cov(\xi - 0.5\eta , \eta) = \Cov(\xi, \eta) - 0.5\cdot \Cov(\eta, \eta) = 0.5 - (0.5)\cdot1 = 0
+\]
+
+Следовательно, компоненты вектора $z$ некоррелированы и независимы (С и D неверно),
+
+\[
+\xi - 0.5\eta \sim \cN(0; 0.75) \Rightarrow \text{Е неверно}
+\]
+
+А неверно, так как случайные величины зависимы
+
+B верно, так как $z = (\xi-0.5\eta;\eta)^T$ является двумерным нормальным вектором (распределение $\cN$ \begin{pmatrix}0&0.75&0\\0&0&1\end{pmatrix})
+
+\textbf{Ответ: B}
+
+
+%21
+\item
+
+$\E(\xi) = 0 = \E(\eta), \Var(\xi) = 1 = \Var(\eta), \Cov(\xi, \eta) = 0.5$ по условию
+
+\[
+\rho=\Corr(\xi,\eta)=\frac{\Cov(\xi,\eta}{\sigma_x\sigma_y}=\frac{0.5}{1\cdot1}=0.5
+\]
+
+\[
+\E(\xi|\eta=1) = \E(\xi)+\rho\frac{\sqrt{\Var(\xi)}}{\sqrt{\Var(\eta)}}(1-\E(\eta))=0+(0.5)\cdot1\cdot(1-0)=0.5
+\]
+
+\[
+\Var(\xi|\eta=1) = \Var(\xi)(1-\rho^2)=1\cdot (1-0.25)=0.75
+\]
+
+\textbf{Ответ: C}
+
+
+%22
+\item 
+Заполним таблицу на основе данных условия:
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lcc}
+    \toprule
+      $X\mid Y=0$      & $0$  & $2$  \\
+      \midrule
+      $\P(X\mid Y=y)$$ & $1/2$ & $1/2$  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+\[
+\P(X=0\mid Y=0)=\frac{\P(X=0\cap Y=0)}{\P(Y=0)}=\frac{\frac{1}{6}}{\frac{1}{3}}=0.5
+\]
+
+\[
+\P(X=2\mid Y=0)=\frac{P(X=2\cap Y=0)}{\P(Y=0)}=\frac{\frac{1}{6}}{\frac{1}{3}}=0.5
+\]
+
+\[
+\E(X\mid Y=0)=0\cdot0.5+2\cdot0.5=1
+\]
+
+\textbf{Ответ: A}
+
+
+%23
+\item
+
+\[
+\P(X=0\mid Y<1)=\P(X=0\mid Y=-1)+\P(X=0\mid Y=0)
+\]
+
+\[
+\P(X=0|\mid Y<1)=\frac{\P(X=0 \cap Y<1)}{\P(Y<1)}=\frac{0+\frac{1}{6}}{\frac{2}{3}}=0.25
+\]
+
+\textbf{Ответ: B}
+
+
+%24
+\item
+
+По свойству дисперсии: $\Var(Y) = \E(Y^2) - [\E(Y)]^2$
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lcccc}
+    \toprule
+      & $Y=-1$ & $Y=0$ & $Y=1$ & \sum  \\
+      \midrule
+      $X=0$ & $0$  & $1/6$ & $1/6$ & $1/3$  \\
+      $X=2$ &  $1/3$ &  $1/6$ &  $1/6$ &  $2/3$\\
+      $\sum$ & $1/3$ & $1/3$ & $1/3$ & $1$\\  
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+\[
+\E(Y^2)=(-1)^2\cdot\frac{1}{3}+0\cdot\frac{1}{3}+1^2\cdot \frac{1}{3}=\frac{2}{3}
+\]
+
+\[
+\E(Y)^2=\qty(\grande(-1)\cdot\frac{1}{3}+0\cdot\frac{1}{3}+1^2\cdot \frac{1}{3})^2=0
+\]
+
+Следовательно, $\Var(Y) = \frac{2}{3}$
+
+\textbf{Ответ: A}
+
+
+%25
+\item
+
+$\Cov(X,Y)=\E(XY)-\E(X)\E(Y)$\\
+
+Условие:
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lcccc}
+    \toprule
+      & $Y=-1$ & $Y=0$ & $Y=1$ & \sum  \\
+      \midrule
+      $X=0$ & $0$  & $1/6$ & $1/6$ & $1/3$  \\
+      $X=2$ &  $1/3$ &  $1/6$ &  $1/6$ &  $2/3$\\
+      $\sum$ & $1/3$ & $1/3$ & $1/3$ & $1$\\  
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+Составим таблицу на основе условия:
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lccc}
+    \toprule
+      $XY$      & $-2$  & $0$  & $2$ \\
+      \midrule
+      $\P(XY)$ & $1/3$ & $1/2$ & $1/6$ \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+\[
+\E(XY) = (-2)\cdot\frac{1}{3} + 0 + 2\cdot\frac{1}{6}  = \frac{-1}{3}
+\]
+
+\[
+\E(Y) = (-1)\cdot\frac{1}{3}+ 0\cdot\frac{1}{3}+ 1\cdot\frac{1}{3}= 0
+\]
+
+Следовательно, $\Cov(X, Y) = \frac{-1}{3} - 0 = \frac{-1}{3}$
+
+\textbf{Ответ: B}
+
+
+%26
+\item
+
+\[
+\int\limits_{0}^{0.5} {\int\limits_{0}^{0.5} 9x^2y^2\,dx}\,dy=9\int\limits_{0}^{0.5} \left.\frac{x^3}{3}\right|_0^{0.5} \,dy=3\int\limits_{0}^{0.5} \frac{1}{8}y^2 \,dy=\frac{3}{8}(\left.\frac{y^3}{3}\right|_0^{0.5})=\frac{1}{8}\cdot\frac{1}{8}=\frac{1}{64}
+\]
+
+\textbf{Ответ: D}
+\end{enumerate}
+
+
+
+
+
+\section{Промежуточный экзамен 2017-2018 гг}
+\begin{enumerate}
+
+%1
+\item 
+
+\[
+\Var(X) = \E(X^2) - \E[(X)]^2 \Rightarrow  \E(X^2) = 6 + 4 = 10
+\]
+
+По неравенству Маркова:
+\[
+\P (X^2 \geqslant \alpha) \leqslant \frac {\E(X^2)}{\alpha}
+\]
+\[
+\P (X^2\geqslant 100) \leqslant \frac{10}{100} = 0.1
+\]
+
+\textbf{Ответ: A}
+
+
+%2
+\item 
+
+Распределение Пуассона \Rightarrow 
+$\E(\xi) = \lambda, \Var(\xi) = \lambda \Rightarrow \E(\xi^2) = \Var(\xi) + [\E(\xi)]^2= \lambda + \lambda^2 = \lambda(\lambda+1)$\\
+
+
+\textbf{Ответ: E}
+
+
+%3
+\item 
+
+\begin{align*}
+\Corr(X+Y,Y)=\frac{\Cov(X+Y,Y)}{\sqrt{Var(X+Y)\cdot \Var(Y)}}=\frac{\Cov(X+Y)+\Var(Y)}{\sqrt{[\Var(X)+\Var(Y)+2\Cov(X,Y)]\cdot \Var(Y)}}=\frac{-3+9}{\sqrt{9\cdot(9+4-6)}}=\\=\frac{6}{\sqrt{63}}=\frac{2}{\sqrt{7}}
+\end{align*}
+
+\textbf{Ответ: C}
+
+
+%4
+\item 
+
+Стандартное нормальное распределение \Rightarrow 
+$\xi \sim \mathcal{N}(0,1) \Rightarrow \text{функция плотности: } f_\xi=\frac{1}{\sqrt{2\pi}}e^\frac{-x^2}{2}$
+
+\[
+\P(\xi\in[-1,2]) = \int\limits_{-1}^{2}\frac{1}{\sqrt{2\pi}}e^\frac{-x^2}{2}\,dx
+\]
+
+\textbf{Ответ: B}
+
+
+%5
+\item 
+
+\[
+(X,Y)\sim\mathcal{U}
+\]
+
+\[
+f_{X,Y}(1,1 )= \frac{S_\text{квадрата}}{S_\text{треугольника}} = \frac{1}{4}
+\]
+\begin{center}
+   \includegraphics[scale=0.4]{gr.pdf} 
+\end{center}
+
+
+\textbf{Ответ: A}
+
+
+%6
+\item 
+
+По определению независимых событий в совокупности.\\
+
+\textbf{Ответ: B}
+
+
+%7
+\item .
+
+\begin{center}
+$\xi \sim U[0;4]$ \Rightarrow 
+$F_\xi =$
+ \begin{cases}
+   $\frac{\xi-0}{4-0}$ &\text{$\xi\in [0;4]$}\\
+   $0$ &\text{$\xi<0$}\\
+   $1$ &\text{$\xi>4$}
+ \end{cases}
+ \end{center}\\
+ 
+\[
+\P(\xi\in[3;6]) = \P(\xi\in[3;4]) = 1-\P(\xi\in [0;3]) = 1-\frac{3-0}{4-0} = 1-0.75 = 0.25
+\]
+
+\textbf{Ответ: B}
+
+
+%8
+\item 
+
+$X = {-5,\ldots,5}$
+
+$Y = {-1,\ldots,1}$
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lccc}
+    \toprule
+      $Y$      & $-1$  & $0$   & $1$ \\
+      \midrule
+      $\P(Y=y)$ & $1/3$ & $1/3$ & $1/3$ \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{lcc}
+    \toprule
+      $Y^2$      & $0$  & $1$   \\
+      \midrule
+      $\P(Y=y)$ & $1/3$ & $2/3$  \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{lccc}
+    \toprule
+      $X$      & $-5$  & $\ldots$   & $5$ \\
+      \midrule
+      $\P(Y=y)$ & $1/11$ & $\ldots$ & $1/11$ \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+
+\[
+Y^2 = 0\Rightarrow X = 2
+\]
+\[
+Y^2 = 1\Rightarrow X = 1
+\]
+\[
+\P(X+Y^2=2) = \frac{1}{3}\cdot\frac{1}{11} + \frac{1}{11}\cdot\frac{2}{3} = \frac{1}{11}
+\]
+
+\textbf{Ответ: C}
+
+
+%9
+\item 
+
+$\text{П} = 180 \Rightarrow \frac{\pi}{3} = 60  \Rightarrow \text{6 секторов}$
+
+$\P_\text{попасть в нужный сектор} = \frac{1}{6}$\\
+
+\textbf{Ответ: E}
+
+
+%10
+\item 
+
+\[
+\P(A\cap B) = 0.2
+\]
+\[
+\P(A\cap B) = 0.6
+\]
+\[
+\P(A \cup B) = \P(A) + \P(B) - \P(A\cap B) \Rightarrow \P(B) = 0.6 + 0.2 - 0.3 = 0.5
+\]
+
+\textbf{Ответ: B}
+
+
+%11
+\item
+
+\[
+\Var(2X+Y+1) = 4 \Var(X) + \Var(Y) - 4 \Cov(X, Y) = 16 + 9 + 12 = 37
+\]
+
+\textbf{Ответ: B}
+
+
+%12
+\item	
+
+\[
+\E(X_i^2) = \Var(X_i) + [\E(X_i)]^2 = 1 + 0 = 1
+\]
+
+По ЗБЧ:
+
+\[
+\plim_{x\to\infty}\frac{\sum X_i^2}{n}=\E(X_1^2)=1
+\]
+
+\textbf{Ответ: B}
+
+
+%13
+\item
+
+\[
+f_Y(y)=\int\limits_{0}^{1} 6xy^2\,dx = \left.{ 3x^2y^2}\right|_0^1=3y^2
+\]
+
+ \begin{center}
+$F_{X|Y} =$ 
+ \begin{cases}
+   \frac{f_{X,Y}(x,y)}{f_Y(y)}=\frac{6x \cdot 0.25}{3 \cdot 0.25}=2x, &\text{$x \in [0;1]$}\\
+   0, &\text{иначе}\\
+ \end{cases}
+ \end{center}
+ 
+\textbf{Ответ: C}
+
+
+%14
+\item
+
+\[
+\overline{X} = \frac{\sum X_i^2}{n}
+\]
+\[
+\E(X) = 4, \Var(X) = 100
+\]
+\[\E(\overline{X} = 4), \Var (\overline{X}) = \frac{100}{n} = 1 \Rightarrow \overline{X} \sim \mathcal{N}(4,1)\]
+
+По ЦПТ:
+
+\[
+\P(\overline{X}\leqslant5) = \frac{\overline{X}-4}{1} \leqslant \frac{5-4}{1} = \P(Z \leqslant 1) = 0.8413
+\]
+
+\textbf{Ответ: C}
+
+
+%15
+\item 
+
+\[
+\Cov(X + 2Y, 2X + 3) = 2\Var(X) + 4\Cov(X, Y) = 8-12 = -4
+\]
+
+\textbf{Ответ: A}
+
+
+%16
+\item 
+
+\[
+\E((X-1)Y) = \E(XY - Y) = \E(XY) - \E(Y) = \Cov(X, Y) + \E(X) \cdot \E(Y) - \E(Y) = -3 - 2 - 2 = -7
+\]
+
+\textbf{Ответ: B}
+
+
+%17
+\item 
+
+.\\
+\begin{center}
+$X_i =$
+ \begin{cases}
+   $1$, &\text{$\P=\frac{1}{6}$}\\
+   $0$, &\text{$\P=\frac{5}{6}$}
+ \end{cases}
+ \end{center}\\
+ 
+ 
+\[
+X1 + X2 = 1 \Rightarrow X_1 = 1  \text{ и }  X_2 = 0 \qty(\grande \P = \frac{1}{6} \cdot \frac{5}{6} = \frac{5}{36}) \text{ или } X_1 = 0 \text{ и } X_2 = 1 \qty(\grande \P = \frac{1}{6} \cdot \frac{5}{6} = \frac{5}{36})
+\]
+\[
+\frac{5}{36} + \frac{5}{36} = \frac{10}{36}
+\]
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lcc}
+    \toprule
+      $X_i$      & $0$  & $1$  \\
+      \midrule
+      $\P$ & $1/2$ & $1/2$  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+\textbf{Ответ: B}
+
+
+%18
+\item 
+
+\[
+\P(X + Y < 3)
+\]
+
+Пусть 
+
+\[
+Z = X + Y
+\]
+
+Тогда
+
+\[
+\E(Z) = \E(X) + \E(Y) = 2 + 1 = 3
+\]
+\[
+\Var(Z) = \Var(X) + \Var(Y) + 2\Cov(X,Y) = 7
+\]
+
+ЦПТ:
+
+\[
+\P\qty(\grande\frac{Z-3}{\sqrt{7}} < \frac{3-3}{\sqrt{7}}) = \P(Z < 0) = 0.5
+\]
+
+\textbf{Ответ: C}
+
+
+%19
+\item 
+
+\[
+\P_{\text{честный|выпала 6}} = 
+\frac{\P_{\text{честный} \cap \text{выпала 6}}}{\P_{\text{выпала 6}}} 
+\cdot 
+\frac {\frac{3}{5} \cdot \frac{1}{6}}{\frac{3}{5} \cdot \frac{1}{6} + \frac{1}{5} \cdot \frac{1}{2} + \frac{1}{5} \cdot \frac{1}{10}} =
+\frac{5}{11}
+\]
+
+\textbf{Ответ: C}
+
+
+%20
+\item 
+
+По свойствам ковариационной матрицы: варианты D и E отпадают (не симметричные), A и B не подходят, т.к. отрицательно определены.\\
+
+\textbf{Ответ: C}
+
+
+%21
+\item 
+
+\[
+\E(\alpha X + (1 - \alpha)Y) = \alpha\E(X) +(1 - \alpha)\E(Y) = 0
+\]
+\[
+-\alpha + (1 - \alpha)2 = 0
+\]
+\[
+2 - 3\alpha = 0 \Rightarrow \alpha = \frac{2}{3}
+\]
+
+\textbf{Ответ: A}
+
+
+%22
+\item
+
+\[
+\P(\xi=0)=C_0^2\cdot\qty(\grande\frac{3}{4})^0\cdot\qty(\grande\frac{1-3}{4})^2=\frac{2!}{2!}\cdot1\cdot\frac{1}{16}=\frac{1}{16}
+\]
+
+\textbf{Ответ: B}
+
+
+%23
+\item
+
+\[
+\P(k \geqslant 1) = 1 - \P(k = 1) - \P(k = 0) = 1 - \frac{4}{1!} \cdot e^{-4} \cdot \frac{-1}{0!} \cdot e^{-4} = 1-e^{-4}
+\]
+
+\textbf{Ответ: C}
+
+
+%24
+\item 
+
+\[
+\E(\xi^2) = \Var(\xi) + [\E(\xi)]^2 =\P(1 - \P) + \P^2 = \P - \P^2 + \P^2 = \P
+\]
+\[
+\text{Бернулли} \Rightarrow \Var(\xi) = \P(1- \P), \E(\xi) = \P
+\]
+
+\textbf{Ответ: B}
+
+
+%25
+\item
+
+Экспоненциальное распределение \Rightarrow 
+$\E(X) = \frac{1}{\lambda}, \Var(X) = \frac{1}{\lambda^2}$
+
+\[
+\E(X^2) = \Var(X) + [\E(X)]^2 = \frac{1}{\lambda^2} + \frac{1}{\lambda^2} = \frac{2}{\lambda^2}
+\]
+
+\textbf{Ответ: A}
+
+
+%26
+\item
+
+$\frac{\pi}{3} = 600 \Rightarrow 6 \text{ секторов}$
+
+\[
+\P(A) = \P(B) = \frac{1}{6}
+\]
+
+\begin{enumerate}
+\item[A)]
+$\P(A)+\P(B) = \frac{1}{3}\neq1 \Rightarrow \text{не полная группа событий}$
+
+\item[B)]
+$\P(A) = \P(B) = \frac{1}{6}$
+
+\item[C)]
+Они зависимы, т.к. не могут произойти враз
+
+\item[D)]
+Вероятности событий равны
+
+\item[E)]
+Они несовместны (не могут произойти враз)
+\end{enumerate}
+
+\textbf{Ответ: E}
+
+
+%27
+\item
+
+\[
+\E(XY)=\int\limits_{0}^{1} {\int\limits_{0}^{1}xy6xy^2\,dy}\,dx=\left.{\int\limits_{0}^{1}2xy^3y^3}\right|_0^1\,dy=\int\limits_{0}^{1} 2y^3\,dy=\left.\frac{y^4}{2}\right|_0^1=\frac{1}{2}
+\]
+
+
+%28
+\item
+
+\[
+\Var(\alpha X +(1-\alpha) Y)=\alpha^2 Var(X) + (1-\alpha)^2 \Var(Y) + 2\alpha\cdot(1-\alpha)\Cov(X,Y) = 19\alpha^2 - 24\alpha+9
+\]
+\[
+\alpha_\text{вершины}=\frac{24}{38}=\frac{12}{19}
+\]
+
+\textbf{Ответ: нет правильного ответа}
+
+
+%29
+\item
+
+\[
+\P_\text{без рюкзака}=\frac{50}{200}\cdot\frac{1}{2}+\frac{55}{200-50}\cdot\frac{150}{200}=\frac{1}{8}\cdot\frac{11}{40}=0.4
+\]
+
+\textbf{Ответ: B}
+
+
+%30
+\item
+
+\[
+\E(X)=2, \Var(X)=6
+\]
+
+По неравенству Чебышева:
+
+\[
+\P(\abs{2-X}\leqslant10)\qeqslant1-\frac{6}{100}=1-\frac{\Var(X)}{\varepsilon^2}=0.94
+\]
+\[
+\P(\abs{\E(X)-X}\leqslant10)=1-\P(\abs{\E(X)-X}\leqslant10)
+\]
+
+\textbf{Ответ: C}
+\end{enumerate}
+
+
+
+
+\section{Выборочные задачи из контрольных работ}
+\begin{enumerate}
+
+
+\item
+\textbf{Контрольная работа №2 (2018-2019гг). Задача 6.}
+\begin{enumerate}
+
+\item[A)] 
+$R_A = \frac{R_1}{2} + \frac{R_2}{2} + 0\cdot R_3$ -- доходность портфеля A
+
+$R_B = \frac{R_2}{2} + \frac{R_3}{2} + 0\cdot R_1$  -- доходность портфеля B
+
+$\E(R_A) = \frac{1}{2}\cdot5 + \frac{1}{2}\cdot10 = 7.5$  -- ожидаемая доходность портфеля A
+
+$\E(R_B) = \frac{1}{2}\cdot10 + \frac{1}{2}\cdot15 = 12.5$ -- ожидаемая доходность портфеля В\\
+
+
+\item[Б)] 
+Найдем риски портфелей A и В:
+
+$\Var(R_A) = \Var(\frac{R_1}{2} + \frac{R_2}{2}) = \Var(\frac{R_1}{2}) + \Var(\frac{R_2}{2}) + 2\Cov(\frac{R_1}{2}, \frac{R_2}{2}) = \frac{\Var(R_1)+\Var(R_2)}{4} + \frac{\Cov(R_1,R_2)}{2} = \frac{50}{4} + \frac{100}{4}+ \frac{20}{2} = 47.5$
+
+$\Var(R_B) = \Var(\frac{R_2}{2} + \frac{R_3}{2}) = \Var(\frac{2_1}{2}) + \Var(\frac{R_3}{2}) + 2\Cov(\frac{R_2}{2}, \frac{R_3}{2}) = \frac{\Var(R_2)+\Var(R_3)}{4} + \frac{\Cov(R_2,R_3)}{2} = \frac{100}{4} + \frac{150}{4}- \frac{10}{2} = 57.5$
+
+Так как риск портфеля равен $\sqrt{\Var(R_i)}$, то риск портфеля $A = \sqrt{47.5} \approx 6.89$; риск портфеля $B = \sqrt{57.5} \approx 7.58$\\
+
+
+\item[B)] 
+Портфель B имеет большую ожидаемую доходность, так как $\E(R_B) = 12.5 > \E(R_A) = 7.5$
+
+Портфель А имеет меньший риск, так как $\sqrt{\Var(R_B)} \approx 7.58 > \sqrt{\Var(R_A)} \approx 6.89$
+
+\begin{align*}
+\Corr(R_A,R_B)=\frac{\Cov(R_A,R_B)}{\sqrt{\Var(R_A)\Var(R_B)}}=
+\frac{\Cov(\frac{R_1}{2}+\frac{R_2}{2},\frac{R_2}{2}+\frac{R_3}{2})}{\sqrt{47.5}\cdot\sqrt{57.5}}=
+\frac{\Cov(\frac{R_1}{2},\frac{R_2}{2}+\frac{R_3}{2})+\Cov(\frac{R_2}{2},\frac{R_2}{2}+\frac{R_3}{2})}{\sqrt{47.5}\cdot\sqrt{57.5}}=\\
+=
+\frac{\Cov(\frac{R_1}{2},\frac{R_2}{2})+\Cov(\frac{R_1}{2},\frac{R_3}{2})+\Cov(\frac{R_2}{2},\frac{R_2}{2})+\Cov(\frac{R_2}{2},\frac{R_3}{2})}{\sqrt{47.5}\cdot\sqrt{57.5}}=
+\frac{\frac{\Cov(R_1,R_2)}{4}+\frac{\Cov(R_1,R_3)}{4}+\frac{\Cov(R_2,R_2)}{4}\frac{\Cov(R_2,R_3)}{4}}{\sqrt{47.5}\cdot\sqrt{57.5}}=\\
+=\frac{\frac{20}{4}+\frac{-10}{4}\frac{Var(R_2)}{4}+\frac{-10}{4}}{\sqrt{47.5}\cdot\sqrt{57.5}}=
+\frac{\frac{100}{4}}{\sqrt{47.5}\cdot\sqrt{57.5}} \approx 0.48
+\end{align*}
+
+\item[Г)] 
+Чтобы собрать собственный портфель $R_c$, обладающий доходностью не меньшей, чем портфели A и B, но меньшим риском, нужно минимизировать риски (т.е. нужно решить задачу минимизации $\Var(R_c)$) при условии, что сумма долей ценных бумаг равна 1:\\
+
+\begin{cases}
+\[$\min \Var(R_c)=50w_1^2+100w_2^2+150w_3^2+40w_1w_2-20w_1w_3-20w_2w_3$\\
+s.t. $w_1+w_2+w_3=1$
+\end{cases}\\
+
+Составим вспомогательную функцию Лагранжа:
+
+$L(w,\lambda)=50w_1^2+100w_2^2+150w_3^2+40w_1w_2-20w_1w_3-20w_2w_3+\lambda(w_1+w_2+w_3-1)$\\
+
+Необходимым условием экстремума функции Лагранжа является равенство нулю ее частных производных по переменным $w_i$ и неопределенному множителю $\lambda$.\\
+
+Составим систему:\\
+
+\begin{cases}
+\frac{\partial L}{\partial w_1}=100w_1+40w_2-20w_3+\lambda=0\\
+
+\frac{\partial L}{\partial w_2}=40w_1+200w_2-20w_3+\lambda=0\\
+
+\frac{\partial L}{\partial w_3}=-20w_1-20w_2+300w_3+\lambda=0\\
+
+\frac{\partial L}{\partial \lambda}=w_1+w_2+w_3-1=0
+
+\end{cases}\\
+
+
+\begin{cases}
+100w_1+40w_2-20w_3=-\lambda\\
+
+40w_1+200w_2-20w_3=-\lambda\\
+
+-20w_1-20w_2+300w_3=-\lambda
+\end{cases}\\
+
+$100w_1+40w_2-20w_3=40w_1+200w_2-20w_3=-20w_1-20w_2+300w_3$\\
+$5w_1+2w_2-w_3  = 2w_1+10w_2-w_3  = -w_1-w_2+15w_3$ (уравнения 1,2 и 3 соответсвенно)\\
+
+Выразим из 1 и 2 уравнений $w_2=\frac{3w_1}{8}$ и из 2 и 3 $w_3=\frac{11w_2+3w_1}{14}$, подставим $w_2$ в $w_3$ и получим $w_3=\frac{19\cdot3w_1}{14\cdot8}$. 
+
+Подставим выраженные через $w_1$ уравнения в ограничение системы:
+
+\[
+w_1+\frac{3w_1}{8}+\frac{19\cdot3w_1}{14\cdot8}=1
+\]
+
+Приводим подобные слагаемые в левой части уравнения:
+
+\[
+\frac{211w_1}{112}=1
+\]
+
+Следовательно, $w_1=\frac{112}{211}, w_2=\frac{42}{211}, w_3=\frac{57}{211}$\\
+
+\[
+\Var(R_c)=29.27944
+\]
+\[
+\sqrt{Var(R_c)} = 5.411048 – \text{риск портфеля С}
+\]
+
+$\E(R_c) = \frac{112}{211}\cdot5 + \frac{42}{211}\cdot10 + \frac{57}{211}\cdot15 = 8.696682$ -- ожидаемая доходность портфеля С\\
+
+Так как риск портфеля С меньше рисков портфелей А и В, а ожидаемая доходность портфеля С больше ожидаемой доходности портфеля А (то есть не имеет не меньшую доходность, чем портфели А и В), то найденный портфель С с долями ценных бумаг $w_1=\frac{112}{211} ,w_2=\frac{42}{211}, w_3= \frac{57}{211}$ является искомым.
+\end{enumerate}
+
+\item
+\textbf{Контрольная работа №3 (2018-2019гг). Задача 8.}
+
+\begin{enumerate}
+\item[а.]
+
+$\E(\hat{\theta_n})=\theta \text{ условие несмещенности}$
+
+$\E(\hat{\theta_n})=\E(\frac{3}{2}\bar{X})=\frac{3}{2}\cdot\mathbb{E}\qty(\tall\frac{\sum X}{n})=\frac{3}{2}\cdot\frac{1}{n}\cdot n\E(X_i)=\frac{3}{2}\cdot\frac{2}{3}\cdot\theta=\theta \Rightarrow \text{несмещенная}$
+
+$\E(X^2)=\int\limits_{0}^{\theta} \frac{2x^2}{3\theta^2} \,dx = \left.\frac{2x^3}{3\theta^2}\right|_0^\theta = \frac{2}{3}\theta$
+
+\item[б.]
+$\E(X^2)=\int\limits_{0}^{\theta} \frac{2x^3}{4\theta^2}\, dx = \left.\frac{2x^4}{\theta^2}\right|_0^\theta=\frac{\theta^2}{2}-\frac{4}{9}\theta^2=\frac{\theta^2}{18}$
+
+$\Var(\hat{\theta_n}) = \Var(\frac{3}{2}\bar{X})=\frac{9}{4n}\Var(X_i)=\frac{9}{4n}\cdot\frac{\theta^2}{18}=\frac{\theta^2}{8n}$\\
+
+\item[в.]
+Так как оценка несмещенная, то для установления состоятельности достаточно одного условия:
+
+$\lim_{n\to\infty}Var(\hat{\theta_n})=0$
+
+$\lim_{n\to\infty}\frac{\theta^2}{8n}=0 \Rightarrow \text{оценка состоятельна}$\\
+
+
+\item[г.]
+$\E(\max(X_1,\ldots,X_n)=\E(X_\textit{max})=\E(X_i)=\frac{2}{3}\theta \neq \theta \Rightarrow \text{смещенная}$
+
+$\text{Величина смещения:} x=\frac{2}{3}\theta-\theta=\frac{1}{3}\theta$\\
+
+\item[д.]
+$MSE(\hat{\theta_n})=\E(\frac{3}{2}-\theta)^2 = \E(\frac{9}{4}\bar{X}^2 - 3\bar{X}\theta+\theta^2) = \frac{9\theta^2}{4\cdot2}-3\theta\cdot\frac{2}{3}\theta+\theta^2=\frac{\theta^2}{8}$
+
+$MSE(\hat{T})=\E(\max(X_1,\ldots,X_n)-\theta)^2=\E(X_\textit{max}-\theta)^2=\E(X_\textit{max}^2)-2\theta \E(X_\textit{max}) +\theta^2=\frac{\theta^2}{2}-\frac{4}{3}\theta+\theta^2=\frac{1}{6}\theta^2$
+
+$MSE(\hat{\theta_n})<MSE(\hat{T})$ $\Rightarrow \hat{\theta_n}$ эффективнее
+
+\end{enumerate}
+
+\item
+\textbf{Контрольная работа №3 (2018-2019гг). Задача 9.}
+
+\begin{enumerate}
+
+\item[а.]
+
+$f(x,\theta) = \frac{1}{\sqrt{2\pi\theta}}e^{\frac{-x^2}{2\theta}}$
+
+$L=\prod_{i=1}^{n} f(x,\theta) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\theta}}e^{\frac{-x^2}{2\theta}} = \qty(\grande{\frac{1}{\sqrt{2\pi}}})^n \cdot \qty(\grande{\frac{1}{\sqrt{\theta}}})^n \cdot e^{-\frac{\sum X_i^2}{2\theta}}$
+
+$ln L = -\frac{n}{2}ln(2\pi)+(-\frac{n}{2}ln\theta)-\frac{\sum X_i^2}{2\theta}$
+
+$\frac{\partial lnL}{\partial\theta}=-\frac{n}{2}\cdot\frac{1}{\theta}-\frac{\sum X_i^2}{2}\cdot (-\frac{1}{\theta^2})=0$
+
+$\hat\theta_\textit{ML} = \frac{\sum X_i^2}{n}$
+
+$\frac{\partial^2 lnL}{\partial\theta^2} = \frac{n}{2\theta^2}-\frac{\sum X_i^2}{\theta^3} = \hat\theta_\textit{ML} = \frac{n^3}{2{(\sum X_i^2)}^2} - \frac{n^3}{\sum X_i^2} = \frac{n^3(1-2\sum X_i^2)}{2{(\sum X_i^2})^2} < 0 \Rightarrow \max$\\
+
+\item[б.]
+$\E(\frac{\sum X_i^2}{n})=\frac{1}{n}\E(\sum X_i^2) = \frac{1}{n} \cdot n \cdot \E(X_i^2) = \E(X_i^2) = \Var(X_i) + {[\E (X_i)]}^2 = \theta + 0 = \theta \Rightarrow \text{оценка несмещена}$\\
+
+\item[в.]
+$I(\theta) = -\E(\frac{\partial^2 lnL}{\partial\theta^2}) = -\E\qty(\tall\frac{n}{2\theta^2} - \frac{\sum X_i^2}{\theta^3}) = \frac{-n}{2\theta^2} + \frac{1}{\theta^3} \cdot n \cdot \E(X_i^2) = \frac{-n}{2\theta^2} + \frac{n}{\theta^2} = \frac{n}{2\theta^2}$\\
+
+
+\item[г.]
+По неравенству Рао-Крамера:
+
+$\Var(\hat{\theta_n}) = \Var\qty(\tall\frac{\sum X_i^2}{n}) = \frac{1}{n^2} \cdot \Var (\su X_i^2) = \frac{1}{n^2}\cdot n \cdot \Var(X_i^2) = \frac{1}{n} \Var(X_i^2) = \frac{1}{n}(\E(X^4) - [\E(X^2)]^2) = \frac{1}{n} \cdot (3\theta^2 - \theta^2) = \frac{2\theta^2}{n} \Rightarrow \Var(\hat{\theta_n}) = \frac{1}{I(\theta)} \Rightarrow \text{оценка эффективная}$
+
+\end{enumerate}
+
+
+\item
+\textbf{Контрольная работа №3 (2013-2014гг). Задача 1.}
+
+$B_1 = 3$
+
+$B_2 = 1$
+
+$\alpha = 4 \Rightarrow 1 - \alpha = 0.96$
+
+$X_i \sim \mathcal{N}(\mu, \sigma^2)$
+
+$n = 13$
+
+$\overline{X}=51$
+
+$\hat\sigma^2=3$
+
+Доверительный интервал для мат. ожидания:
+
+\[
+\P\qty(\grande\overline{X}-t_{12;\frac{\alpha}{2}}\cdot\frac{\hat\sigma}{\sqrt{n}}<\mu<\overline{X}+t_{12;\frac{\alpha}{2}}\cdot\frac{\hat\sigma}{\sqrt{n}})=1-\alpha
+\]
+\[
+51-3.055\cdot\frac{\sqrt{3}}{\sqrt{13}}<\mu<51+3.055\cdot\frac{\sqrt{3}}{\sqrt{13}}
+\]
+\[
+(49.5326; 52.4674)
+\]
+
+
+Доверительный интервал для дисперсии:
+
+\[
+\P\qty(\grande\frac{\hat\sigma^2(n-1)}{\chi^2_{n-1;1-\frac{\alpha}{2}}}<\sigma^2<\frac{\hat\sigma^2(n-1)}{\chi^2_{n-1;\frac{\alpha}{2}}})=1-\alpha
+\]
+\[
+\frac{12\cdot3}{28.3}<\sigma^2
+\]
+\[
+1.2721<\sigma^2
+\]
+
+
+\item
+\textbf{Контрольная работа №3 (2013-2014гг). Задача 2.}
+
+$n_1 = 85, n_2 = 100$
+
+$\hat p_1 = \frac{1}{3+1}=\frac{1}{4}, \hat p_2 = \frac{1}{1+1}=\frac{1}{2}$
+
+$H_0: p_1 = p_2 = p_0$
+
+$H_1: p_1 \neq p_2$
+
+$p_0=\frac{85\cdot0.25+100\cdot}{185}$
+
+\[
+Z_p=\frac{0.25-0.5}{\sqrt{0.385\cdot(1-0.385)}}\sim \mathcal{N}(0,1)
+\]
+\[
+Z_p=\frac{0.25-0.5}{\sqrt{0.385\cdot(1-0.385)}}\approx 3.483
+\]
+
+$H_0$ не отвергается в интервале $(-2.05; 2.05)$. Так как расчётное значение не входит в этот интервал \Rightarrow $H_0$ отвергается \Rightarrow \text{преподаватели предъявляют разные требования}$
+
+\[
+p-value=2\P(Z >\abs{Z_\p}) = 2\P(Z>3.483) = 2(1-\P(Z\leqslant3.483))=2(1-0.9997)=0.0006
+\]
+
+
+\item
+\textbf{Контрольная работа №3 (2009-2010гг). Задача 1.}
+
+\[
+\overline{X}=\frac{-1.5+2.6+1.2-2.1+0.1+0.9}{6}=0.2
+\]
+\[
+\hat\sigma^2=\frac{\sum {(X_i-\overline X)}^2}{n}=\frac{15.44}{6}=2.573 \text{ неисправленная}
+\]
+\[
+\hat\sigma^2=\frac{\sum {(X_i-\overline X)}^2}{n-1}=\frac{15.44}{5}=3.088 \text{ исправленная}
+\]
+
+Вариационный ряд: $-2.1; -1.5; 0.1; 0.9; 1.2; 2.6$
+
+
+\item
+\textbf{Контрольная работа №3 (2009-2010гг). Задача 3.}
+
+Чтобы оценка среднего по генеральной совокупности с наименьшей дисперсией была несмещенной, необходимо «взвесить» страты:
+
+\[
+\hat X_s=\sum_{i=1}^{s}w_i\overline{X}_i=0.1X_1 + 0.3X_2 + 0.6X_3
+\]
+\[
+\Var(\hat X_i)=\frac{\sigma_i^2}{n_i},
+\] 
+
+где i – номер страты, S – количество страт\\
+
+Решаем задачу:\\
+
+\begin{cases}
+\[\max \Var(\hat X_s)=\sum_{i=1}^{s} \frac{\sigma_i^2}{n_i}w_i^2\\
+s.t. TC = \sum_{i=1}^{s} c_in_i
+\end{cases}\\
+
+\begin{cases}
+\Var(\hat X_s)=(0.1)^2\frac{50^2}{n_1}+(0.3)^2\frac{20^2}{n_2}+(0.6)^2\frac{10^2}{n_3} \rightarrow min(n_1,n_2,n_3 )\\
+s.t. 60000=150n_1+40n_2+15n_3
+\end{cases}
+
+$L = \frac{25}{n_1} +\frac{36}{n_2} +\frac{36}{n_3}+\lambda(150n_1+40n_2+15n_3  - 60000)$
+\begin{cases}
+\frac{\partial L}{\partial n_1}=-\frac{25}{n_1^2}+150\lambda=0\\
+\frac{\partial L}{\partial n_2}=-\frac{36}{n_2^2}+40\lambda=0\\
+\frac{\partial L}{\partial n_3}=-\frac{25}{n_3^2}+15\lambda=0
+\end{cases}
+
+\begin{cases}
+\frac{1}{6n_1^2}=\lambda\\
+\frac{9}{10n_2^2}=\lambda\\
+\frac{12}{5n_3^2}=\lambda
+\end{cases}
+
+\[
+\frac{1}{6n_1^2}=\frac{9}{10n_2^2}=\frac{12}{5n_3^2}
+\]
+\[
+n_2 = \sqrt{5.4}n_1
+\]
+\[
+n_3 = \sqrt{14.4}n_1
+\]
+
+Подставим в ТС: $60000=150n_1+40\sqrt{5.4}n_1+15\sqrt{14.4}n_1$
+
+\[
+n_1^* = \frac{60000}{300} = 200; n_2^* \approx 465; n_3^* \approx 759
+\]
+
+Проверка -- подставим найденные значения в бюджетное ограничение ТС: 
+
+\[
+150\cdot200 + 40\cdot465 + 15\cdot759 = 59985 \leqslant 60000,
+\]
+
+следовательно, найдены верные значения.
+
+
+
+\item
+\textbf{Контрольная работа №3 (2009-2010гг). Задача 4.}
+
+Так как выборка $X_1, X_2, …, X_n$ имеет равномерное распределение $\U[0;\theta]$, то:
+
+\[
+X_1 = X_2 = … = X_n = X_i
+\]
+\[
+\E(X_i) = \frac{0 + \theta }{2} = \frac{\theta}{2}
+\]
+\[
+\Var(X_i) = \frac{(\theta-0)^2}{12} = \frac{\theta^2}{12}
+\]
+
+Найдем оценку параметра θ методом моментов:
+
+\[
+\E(X_i) = \frac{\theta}{2}=\overline{X}
+\]
+\[
+\hat\theta_\textit{MM}= 2\overline{X}
+\]
+
+Оценка является несмещенной, если выполняется: $E(\hat\theta) = \theta$.
+
+\[
+\E(\hat\theta_\textit{MM})=\E(2\overline{X})=2\E\qty(\grande\frac{\sum_{i=1}^{n} X_i }{n})=2\Е(X_i) = 2\cdot \frac{\theta}{2} = \theta
+\]
+
+следовательно, найденная оценка является несмещенной}\\
+
+Оценка является состоятельной, если она несмещенная (или асимптотически несмещенная) и 
+\[
+\lim_{n\to\infty}\Var(\hat{\theta_n})=0
+\]
+\[
+\Var(\hat\theta_\textit{MM})=\Var(2\overline{X})=4\Var(\overline{X})=\frac{4\Var(X_i)}{n}=\frac{4}{n}\cdot\frac{\theta^2}{12}=\frac{\theta^2}{3n}
+\]
+\[
+\lim_{n\to\infty}\frac{\theta^2}{3n}=0
+\]
+
+следовательно, оценка состоятельная\\
+
+Оценка считается эффективнее, если ее дисперсия меньше. Так как $X_1, X_2,\ldots, X_n$ – независимые одинаково распределенные случайные величины
+
+\[
+X_1 = X_2 = … = X_n = X_i
+\]
+
+то
+
+\[
+X_i = X_n = \max(X_1,\ldots, X_n)
+\]
+\[
+\Var(T)=\Var\qty(\tall\frac{n+1}{n}X_i)=\qty(\tall{\frac{n+1}{n}})^2\Var (X_i)=\qty(\grande{\frac{n+1}{n}})^2\cdot\frac{\theta^2}{12}
+\]
+
+Сравним дисперсии оценок:
+
+\begin{align*}
+\Var(\hat\theta_\textit{MM})-\Var(T)=\frac{\theta^2}{3n}-\qty(\tall{\frac{n+1}{n}})^2\cdot\frac{\theta^2}{12} = (4n-(n+1)^2 )\cdot\frac{\theta^2}{12n^2}=\\=(4n-n^2-2n-1)\cdot\frac{\theta^2}{12n^2}=(n^2-2n+1)-\frac{\theta^2}{12n^2}=(n-1)^2-\frac{\theta^2}{12n^2}<0
+\end{align*}
+
+следовательно 
+
+\[
+\Var(\hat\theta_\textit{MM})<\Var(T))
+\]
+
+а значит $\hat\theta_\textit{MM}$ эффективнее.
+
+
+
+\item
+\textbf{Контрольная работа №1 (2008-2009 гг). Задача 3.}
+
+$\P_\text{правда}=\frac{1}{3}$
+
+Мэр либо сказал правду ($\P=\frac{1}{3}$), либо соврал($\P=\frac{2}{3}$). Соответственно заместитель на следующий день также либо сказал правду ($\P=\frac{1}{3}$), либо соврал($\P=\frac{2}{3}$). Это два независимых события. Турнир состоится в двух случаях:
+
+\begin{enumerate}
+    \item [1)] оба сказали правду;
+    \item[2)] мэр соврал, но на следующий день ситуация изменилась и заместитель сказал правду (его информация более актуальна).
+\end{enumerate}
+
+Поэтому 
+
+\[
+\P_\text{турнир состоится}=\frac{1}{3}\cdot\frac{1}{3}+\frac{2}{3}\cdot\frac{1}{3}=\frac{1}{3}
+\]
+
+
+\item
+\textbf{Контрольная работа №2 (2010-2011гг). Задача 6.}
+
+20 пар –- это 40 тапочек (генеральная совокупность N = 40). По условию, так как каждый размер представлен в двух парах, есть 4 пары одного размера. $n = 2$ ($X_1$ и $X_2$), которые распределены одинаково).
+
+\[
+\P(X_1 = 36) = \frac{4}{40} = \frac{1}{10}
+\]
+
+\[
+\P(X_1 = x_i, X_2 = x_j)= 
+ \begin{cases}
+   \frac{4}{40}\cdot\frac{3}{39}\approx0.01, &\text{$i=j$}\\
+   \frac{4}{40}\cdot\frac{4}{39}\approx0.008, &\text{$i\neqj$}\\
+ \end{cases}
+ \]
+ 
+Если $i \neq j: \P(X_1 = 36, X_2 = 37) = \frac{4}{40}\cdot \frac{4}{39} \approx 0.01$, где $\frac{4}{40}$ -– вероятность достать $X_1$ первым, а $\frac{4}{39}$ – вероятность достать $Х_2$ вторым.
+
+Если $i = j: \P(X_1 = 36, X_2 = 36) = \frac{4}{40}\cdot \frac{4}{39} \approx 0.008$\\
+
+\begin{center}
+    \vspace{5mm}
+    \begin{tabular}{lccccccccccc}
+    \toprule
+      $X_1,X_2$      & $36$  & $37$  & $38$ & $39$ & $40$ & $41$ & $42$ & $43$ & $44$ & $45$  \\
+      \midrule
+      $\P$           & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$ & $1/10$  \\
+    \bottomrule
+    \end{tabular}
+    \vspace{5mm}   
+\end{center}
+
+
+\[
+\E\qty(\tall\frac{X_1+X_2}{2})=\E(X_i)=\E(X_1)=\E(X_2)=\frac{36+\ldots+45}{10}=40.5
+\]
+\[
+\E(X_i^2)=\E(X_1^2)=\E(X_2^2)=\frac{36^2+\ldots+45^2}{10}=1648.5
+\]
+\[
+\Var(X_i)=E(X_i^2)-{E(X_i)}^2 = 1648.5 - 1640.25 = 8.25
+\]
+\[\Var\qty(\tall\frac{X_1+X_2}{2})=\Var(\overline  X})=\frac{\sigma^2}{n}\qty(\tall-\frac{n-1}{N-1})=\frac{8.25}{2}\qty(\tall 1-\frac{1}{39})\approx4.01
+\]
+\[
+\Cov(X_1, X_2)=-\frac{\sigma^2}{N-1}=-\frac{8.25}{39}\approx-0.21
+\]
+
+\end{enumerate}
+\end{document}
+
